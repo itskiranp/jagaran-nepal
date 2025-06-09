@@ -42,6 +42,7 @@
 .header .logo img {
     max-height: 2.5rem;
     transition: var(--transition);
+    
 }
 
 .header.sticked .logo img {
