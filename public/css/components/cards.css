@@ -1,0 +1,66 @@
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    margin-bottom: 30px;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-img-top {
+    border-radius: 0;
+  }
+  
+  .card-body {
+    padding: 25px;
+  }
+  
+  .card-title {
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  .card-text {
+    color: var(--text-light);
+  }
+  
+  .service-item {
+    padding: 30px;
+    background: #fff;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+  }
+  
+  .service-item .icon {
+    font-size: 36px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  .service-item:hover {
+    transform: translateY(-10px);
+  }
+  
+  .readmore {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 15px;
+  }
+  
+  .readmore i {
+    margin-left: 5px;
+    transition: var(--transition);
+  }
+  
+  .readmore:hover i {
+    transform: translateX(5px);
+  }

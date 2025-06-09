@@ -1,0 +1,86 @@
+/* Footer Styles */
+.footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+    color: #fff;
+    padding: 60px 0 30px;
+    position: relative;
+}
+
+.footer h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    padding: 5px 0;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links a:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+.social-links a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 10px;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer-legal {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.credits a {
+  
+    color:white;
+    text-decoration: none;
+}
+
+.credits a:hover {
+    color: blue
+}
+
+.back-to-top.square {
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+    border-radius: 20%; /* Makes it square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
