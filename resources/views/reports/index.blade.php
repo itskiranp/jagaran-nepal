@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="blog-page">
-        <section class="blog-hero bg-dark text-white py-5">
+    <div class="report-page">
+        <section class="report-hero bg-dark text-white py-5">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h1 class="display-4 fw-bold mb-2 mt-5">Blog</h1>
-                        <p class="lead">Stay updated with our latest news and articles.</p>
+                        <h1 class="display-4 fw-bold mb-2 mt-5">Report</h1>
+                        <p class="lead">Stay updated with our Report.</p>
                     </div>
                 </div>
             </div>

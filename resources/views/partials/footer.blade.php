@@ -26,7 +26,7 @@
                         <li><a href="{{ route('team') }}">Our Team</a></li>
                         <li><a href="{{ route('alumni') }}">Our Alumnis</a></li>
                         <li><a href="{{ route('career') }}">Career</a></li>
-                        <li><a href="{{ route('thematic.areas') }}">Thematic Areas</a></li>
+                        <li><a href="{{ route('thematic-areas.index') }}">Thematic Areas</a></li>
                         <li><a href="{{ route('gallery') }}">Gallery</a></li>
                     </ul>
                 </div>

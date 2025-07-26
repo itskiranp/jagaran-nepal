@@ -21,7 +21,8 @@ class HomeController extends Controller
                 ];
             });
 
-        $aboutContent = "Established in 2009, JagaranNepal is a registered not for profit, purely youth run and led organization working to promote youth participation through empowerment and advocacy...";
+        $aboutContent = "Established in 2003, Jagaran Nepal is a registered non-profit, purely youth-run and youth-led organization based in Makawanpur. We are a passionate group of young professionals with proven experience and knowledge in development and social transformation. Since our founding, we have empowered youth to engage in local and global (glocal) issues, combat social injustices, and promote peace, harmony, and humanitarian values. Jagaran Nepal believes in urgent action, innovation, and the need for transformation to build a more inclusive and enlightened society.";
+
 
         $projects = Project::where('is_active', true)
             ->orderBy('created_at', 'desc')

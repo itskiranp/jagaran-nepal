@@ -2,72 +2,56 @@
 
 @section('content')
     <!-- Hero Section -->
-    <div class="hero mb-5">
-        <div class="hero-carousel">
-            <!-- Slides -->
-                <div class="carousel-slide active"
-                    style="background-image: url('https://images.unsplash.com/photo-1697229299093-c920ab53bfb1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTU2OTIzNzZ8&ixlib=rb-4.0.3&q=85')">
+    <section id="hero" class="hero">
+        <div class="info d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7 text-center">
+                        <h2 data-aos="fade-down">Empowering Youth Strengthening Involvement</h2>
+                        <p data-aos="fade-up">Welcome to the official Jagaran-Nepal website!</p>
+                    </div>
                 </div>
-                <div class="carousel-slide"
-                    style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb‑1.2.1&auto=format&fit=crop&w=1350&q=80')">
-                </div>
-                <div class="carousel-slide"
-                    style="background-image: url('https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb‑1.2.1&auto=format&fit=crop&w=1350&q=80')">
-                </div>
-
-            <!-- Overlay -->
-            <div class="overlay"></div>
-
-            <!-- Content -->
-            <div class="hero-content">
-                <h1>Your Heading Here</h1>
-                <p>Your subheading or description text</p>
-            </div>
-
-            <!-- Navigation -->
-            <div class="carousel-nav">
-                <button class="carousel-btn prev-btn">‹</button>
-                <button class="carousel-btn next-btn">›</button>
-            </div>
-
-            <!-- Indicators -->
-            <div class="carousel-indicators">
-                <div class="indicator active"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
             </div>
         </div>
-    </div>
+
+        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            @foreach ($carouselItems as $item)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}"
+                    style="background-image: url({{ asset($item['image']) }})"></div>
+            @endforeach
+
+            <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </section>
 
     <!-- About Section -->
     <div class="container">
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="row position-relative">
-                    {{-- <div class="col-lg-7 about-img" style="background-image: url({{ asset('images/pic1.jpg') }});"></div> --}}
+                    <div class="col-lg-7 about-img" style="background-image: url({{ asset('images/pic1.jpg') }});"></div>
                     <div class="col-lg-7">
                         <h2>Learn about us</h2>
                         <div class="our-story">
-                            <h4>Est 2003</h4>
+                            <h4>Est 2009</h4>
                             <h3>Know Our Story</h3>
                             <p>{{ Str::limit($aboutContent, 500) }}</p>
                             <div class="watch-video d-flex align-items-center position-relative">
-
-                                <i class="fas fa-info-circle me-1"></i>
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" class="glightbox stretched-link">Watch Our Video</a>
+                                <span></span>
+                                <i class="fas fa-info-circle"></i>
                                 <a href="{{ route('about') }}" class="stretched-link">Learn More</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5 d-flex align-items-center justify-content-center">
-                        <div class="program-card card h-100 border-0 shadow-sm overflow-hidden">
-                            <div class="card-body">
-                                <img src="images/pic5.png" alt="">
-
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
+            </div>
         </section>
     </div>
 
@@ -237,8 +221,7 @@
                                 </div>
                             </div>
 
-                            <div class="text-center "><button type="submit"
-                                    class="btn btn-outline-info">Subscribe</button></div>
+                            <div class="text-center "><button type="submit" class="btn btn-outline-info">Subscribe</button></div>
                         </form>
                     </div>
                 </div>

@@ -1,0 +1,304 @@
+/* ====== Variables ====== */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #f1c40f;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ====== Header Main Styles ====== */
+.header {
+    /* transition: var(--transition); */
+    --_animationStartsAfter: 50vh;
+    --_animationDistance: 120px;
+    --_surfaceColourStart: hsl(0 10% 5%);
+    --_surfaceColourEnd: hsl(0 50% 100%);
+    --_textColourStart: hsl(0 10% 90%);
+    --_textColourEnd: hsl(0 10% 10%);
+    padding: 1.25rem 0;
+    /* background-color: light-dark(var(--light-bg), var(--dark-bg));  */
+    /* box-shadow: var(--shadow); */
+    position: sticky;
+    z-index: 997;
+    top: 0;
+
+    animation: stickyNav linear forwards;
+    width: 100%;
+    @supports (animation-timeline: view) {
+        animation-timeline: view();
+    
+    animation-timeline: view();
+    animation-range-start: calc(100vh + var(--_animationStartsAfter));
+    animation-range-end: calc(100vh + var(--_animationStartsAfter) + var(--_animationDistance));
+}
+}
+
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.header .logo img {
+    max-height: 2.5rem;
+    transition: var(--transition);
+}
+
+.header.sticked .logo img {
+    max-height: 2rem;
+}
+
+/* ====== Navigation Styles ====== */
+.navbar {
+    padding: 0;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar > ul > li > a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--light-color);
+    transition: var(--transition);
+    border-radius: 0.25rem;
+}
+
+.navbar > ul > li > a:hover {
+    color: var(--primary-color);
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* ====== Dropdown Styles ====== */
+
+.navbar .dropdown {
+    position: relative;
+}
+
+/* Main dropdown menu styling */
+.navbar .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position right below parent */
+    left: 0;
+    background-color: #fff;
+    padding: 0.5rem 0;
+    margin: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 12.5rem;
+    z-index: 9999; /* Higher z-index */
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Show dropdown when hovering parent */
+.navbar .dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 0;
+    transform: translateY(0);
+}
+
+/* Create an invisible hover bridge */
+.navbar .dropdown::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* Dropdown items styling */
+.navbar .dropdown-menu li {
+    position: relative;
+    width: 100%;
+}
+
+.navbar .dropdown-menu li a {
+    display: block;
+    padding: 0.625rem 1.25rem;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.navbar .dropdown-menu li a:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
+}
+
+/* Action Buttons */
+.action-btn a {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color) !important;
+    border-radius: 0.25rem;
+    font-weight: 600 !important;
+}
+
+.action-btn a:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* Donate Button */
+.donate-btn a {
+    background-color: var(--primary-color);
+    color: var(--dark-color) !important;
+    border-radius: 0.25rem;
+    font-weight: 700 !important;
+    margin-left: 0.5rem;
+}
+
+.donate-btn a:hover {
+    background-color: #e6b800 !important;
+    color: var(--dark-color) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ====== Mobile Nav ====== */
+.mobile-nav-toggle {
+    color: var(--dark-color);
+    font-size: 1.75rem;
+    cursor: pointer;
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    transition: var(--transition);
+}
+
+.mobile-nav-toggle:hover {
+    color: var(--primary-color);
+}
+
+.mobile-nav-toggle:focus {
+    outline: none;
+}
+
+@media (max-width: 991px) {
+    .mobile-nav-toggle {
+        display: block;
+        z-index: 1000;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        width: 80%;
+        max-width: 20rem;
+        background: #fff;
+        z-index: 998;
+        padding: 4rem 1.5rem 1.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .navbar > ul > li {
+        width: 100%;
+    }
+
+    .navbar > ul > li > a {
+        padding: 0.75rem 0;
+        color: var(--dark-color);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .navbar .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        visibility: visible;
+        opacity: 1;
+        display: none;
+        padding-left: 1rem;
+        transform: none;
+        background-color: rgba(0, 0, 0, 0.02);
+        border-radius: 0;
+    }
+
+    .navbar .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .navbar .dropdown .dropdown-trigger {
+        position: relative;
+        width: 100%;
+    }
+
+    .dropdown-indicator {
+        right: 0;
+    }
+
+    .action-btn a,
+    .donate-btn a {
+        margin: 0.5rem 0;
+        display: inline-block;
+        width: auto;
+    }
+}
+
+/* Overlay Positioning */
+
+/* Slide Positioning */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 0;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}

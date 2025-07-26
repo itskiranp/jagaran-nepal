@@ -15,7 +15,7 @@ class ThematicAreaController extends Controller
 {
     $thematicArea = ThematicArea::where('slug', $slug)->firstOrFail();
     
-    return view('thematic_areas.show', [
+    return view('thematic-areas.show', [
         'thematicArea' => $thematicArea,
         'imageUrl' => $thematicArea->image_path ? Storage::url($thematicArea->image_path) : null
     ]);
@@ -30,7 +30,7 @@ class ThematicAreaController extends Controller
                             ->ordered()
                             ->get();
 
-        return view('thematic_areas.index', compact('thematicAreas'));
+        return view('thematic-areas.index', compact('thematicAreas'));
     }
 
     /**
@@ -38,7 +38,7 @@ class ThematicAreaController extends Controller
      */
     public function create()
     {
-        return view('thematic_areas.create');
+        return view('thematic-areas.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class ThematicAreaController extends Controller
      */
     public function edit(ThematicArea $thematicArea)
     {
-        return view('thematic_areas.edit', [
+        return view('thematic-areas.edit', [
             'thematicArea' => $thematicArea,
             'imageUrl' => Storage::url($thematicArea->image_path)
         ]);

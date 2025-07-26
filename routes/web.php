@@ -35,8 +35,12 @@ Route::prefix('publications')->group(function () {
 });
 
 // Thematic Areas
-Route::get('/thematic-areas', [ThematicAreaController::class, 'index'])->name('thematic.areas');
-Route::get('/thematic-areas/{slug}', [ThematicAreaController::class, 'show'])->name('thematic.area');
+
+Route::prefix('thematic-areas')->group(function () {
+    Route::get('/thematic-areas', [ThematicAreaController::class, 'index'])->name('thematic-areas.index');
+    Route::get('/thematic-areas/{slug}', [ThematicAreaController::class, 'show'])->name('thematic-area.show');
+});
+
 
 // Other pages
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
@@ -54,3 +58,7 @@ Route::prefix('news')->group(function () {
     Route::get('/', [NewsController::class, 'index'])->name('news.list');
     Route::get('/{slug}', [NewsController::class, 'show'])->name('news.show');
 });
+
+// Contact form submission
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
