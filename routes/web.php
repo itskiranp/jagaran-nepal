@@ -62,3 +62,6 @@ Route::prefix('news')->group(function () {
 // Contact form submission
 Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
+// Donation routes
+Route::get('/donate/payment', [App\Http\Controllers\DonationController::class, 'payment'])->name('donate.payment');

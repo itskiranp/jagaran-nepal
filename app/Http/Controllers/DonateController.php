@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class DonateController extends Controller
 {
-    //
+       public function index()
+    {
+        return view('donate.index');
+    }
 }

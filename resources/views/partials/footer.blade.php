@@ -6,9 +6,9 @@
                     <div class="footer-info">
                         <h3>Jagaran-Nepal</h3>
                         <p>
-                            88, Khursanitaar, Lazimpat-2, Kathmandu, Nepal <br><br>
-                            <strong>Phone:</strong> (+977)-01-4519489 / (+977)-9865367502<br>
-                            <strong>Email:</strong> info@jagarannepal.org<br>
+                            Hetauda-10, TCN Road, Makawanpur, Nepal <br><br>
+                            <strong>Phone:</strong> 98550 68 460/98550 67 509<br>
+                            <strong>Email:</strong> jagarannepal2003@gmail.com<br>
                         </p>
                         <div class="social-links d-flex mt-3">
                             <a target="_blank" href="https://www.facebook.com/yuwanepal" class="d-flex align-items-center justify-content-center"><i class="fab fa-facebook-f"></i></a>
