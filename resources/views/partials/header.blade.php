@@ -105,7 +105,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center" data-scroll-threshold="40">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <a href="{{ url('/') }}" class="logo d-flex align-items-center">
-            <img src="{{ asset('images/logo.png') }}" alt="JN Logo">
+            <img src="{{ asset('images/jn_logo.png') }}" alt="JN Logo">
         </a>
 
         <nav id="navbar" class="navbar" role="navigation" aria-label="Primary">
@@ -141,8 +141,8 @@
                     </a>
                     <ul id="thematic-menu" class="dropdown-menu" role="menu" aria-labelledby="thematic-trigger">
                         <li role="none"><a role="menuitem" href="{{ route('thematic-areas.index', 'youth_empowerment') }}">Youth Empowerment</a></li>
-                        <li role="none"><a role="menuitem" href="{{ route('thematic-areas.index', 'research') }}">Research</a></li>
-                        <li role="none"><a role="menuitem" href="{{ route('thematic-areas.index', 'comming_soon') }}">Coming Soon</a></li>
+                        <li role="none"><a role="menuitem" href="{{ route('thematic-areas.research', 'research') }}">Research</a></li>
+                        <li role="none"><a role="menuitem" href="{{ route('thematic-areas.coming-soon', 'commingsoon') }}">Coming Soon</a></li>
                     </ul>
                 </li>
 

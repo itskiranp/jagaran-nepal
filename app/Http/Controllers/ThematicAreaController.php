@@ -32,6 +32,14 @@ class ThematicAreaController extends Controller
 
         return view('thematic-areas.index', compact('thematicAreas'));
     }
+    public function research()
+    {
+        return view('thematic-areas.research');
+    }
+    public function comingSoon()
+    {
+        return view('thematic-areas.coming-soon');
+    }
 
     /**
      * Show the form for creating a new thematic area.
@@ -39,93 +47,5 @@ class ThematicAreaController extends Controller
     public function create()
     {
         return view('thematic-areas.create');
-    }
-
-    /**
-     * Store a newly created thematic area.
-     */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'required|image|max:2048', // 2MB max
-            'order' => 'nullable|integer',
-            'is_active' => 'boolean'
-        ]);
-
-        // Handle image upload
-        $imagePath = $request->file('image')->store('thematic-areas', 'public');
-
-        ThematicArea::create([
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'image_path' => $imagePath,
-            'order' => $validated['order'] ?? 0,
-            'is_active' => $validated['is_active'] ?? true
-        ]);
-
-        return redirect()->route('thematic-areas.index')
-                         ->with('success', 'Thematic area created successfully.');
-    }
-
-    /**
-     * Show the form for editing the specified thematic area.
-     */
-    public function edit(ThematicArea $thematicArea)
-    {
-        return view('thematic-areas.edit', [
-            'thematicArea' => $thematicArea,
-            'imageUrl' => Storage::url($thematicArea->image_path)
-        ]);
-    }
-
-    /**
-     * Update the specified thematic area.
-     */
-    public function update(Request $request, ThematicArea $thematicArea)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'nullable|image|max:2048',
-            'order' => 'nullable|integer',
-            'is_active' => 'boolean'
-        ]);
-
-        $updateData = [
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'order' => $validated['order'] ?? $thematicArea->order,
-            'is_active' => $validated['is_active'] ?? $thematicArea->is_active
-        ];
-
-        // Handle image update if new image provided
-        if ($request->hasFile('image')) {
-            // Delete old image
-            Storage::disk('public')->delete($thematicArea->image_path);
-            
-            // Store new image
-            $updateData['image_path'] = $request->file('image')->store('thematic-areas', 'public');
-        }
-
-        $thematicArea->update($updateData);
-
-        return redirect()->route('thematic-areas.show', $thematicArea)
-                         ->with('success', 'Thematic area updated successfully.');
-    }
-
-    /**
-     * Remove the specified thematic area.
-     */
-    public function destroy(ThematicArea $thematicArea)
-    {
-        // Delete associated image
-        Storage::disk('public')->delete($thematicArea->image_path);
-        
-        $thematicArea->delete();
-
-        return redirect()->route('thematic-areas.index')
-                         ->with('success', 'Thematic area deleted successfully.');
     }
 }

@@ -26,6 +26,7 @@ Route::prefix('about')->group(function () {
     Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni');
 });
 
+
 // Publication routes
 Route::prefix('publications')->group(function () {
     Route::get('/resources', [ResourceController::class, 'index'])->name('resources');
@@ -38,6 +39,9 @@ Route::prefix('publications')->group(function () {
 
 Route::prefix('thematic-areas')->group(function () {
     Route::get('/thematic-areas', [ThematicAreaController::class, 'index'])->name('thematic-areas.index');
+    Route::get('/thematic-areas/research', [ThematicAreaController::class, 'research'])->name('thematic-areas.research');
+    Route::get('/thematic-areas/coming-soon', [ThematicAreaController::class, 'comingSoon'])->name('thematic-areas.coming-soon');
+
     Route::get('/thematic-areas/{slug}', [ThematicAreaController::class, 'show'])->name('thematic-area.show');
 });
 

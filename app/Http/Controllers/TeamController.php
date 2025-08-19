@@ -10,4 +10,5 @@ class TeamController extends Controller
     {
         return view('about.team');
     }
+   
 }

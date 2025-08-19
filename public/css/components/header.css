@@ -40,12 +40,12 @@
 
 /* Logo sizing */
 .header .logo img {
-  max-block-size: 2.5rem;
+  max-block-size: 6rem;
   transition: max-block-size var(--transition-med), transform var(--transition-med);
 }
 
 .header.is-scrolled .logo img {
-  max-block-size: 2rem;
+  max-block-size: 5rem;
   transform: scale(0.95);
 }
 

@@ -20,8 +20,8 @@
 
             <!-- Content -->
             <div class="hero-content">
-                <h1>Your Heading Here</h1>
-                <p>Your subheading or description text</p>
+                <h1>Empowered Youth, Transformed World</h1>
+                <p>Empowering youth with skills, confidence, and opportunities to lead change.</p>
             </div>
 
             <!-- Navigation -->
