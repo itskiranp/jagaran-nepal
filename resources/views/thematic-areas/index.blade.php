@@ -81,7 +81,7 @@
                         <div class="program-card card h-100 border-0 shadow-sm overflow-hidden">
                             <div class="row g-0 h-100">
                                 <div class="col-md-5">
-                                    <img src="{{ asset('images/pic3.jpg') }}" class="img-fluid h-100 object-fit-cover"
+                                    <img src="{{ asset('images/pahichan.png') }}" class="img-fluid h-100 object-fit-cover"
                                         alt="Pahichan workshop">
                                 </div>
                                 <div class="col-md-7">
