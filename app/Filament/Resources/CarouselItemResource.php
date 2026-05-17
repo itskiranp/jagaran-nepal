@@ -31,14 +31,14 @@ class CarouselItemResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')
-                ->label('Title')
-                ->required(),
+                ->label('Title'),
 
             FileUpload::make('image_path')
                 ->label('Carousel Image')
                 ->image()
                 ->directory('carousel') // stored at storage/app/public/carousel
                 ->visibility('public')
+                ->preserveFilenames()
                 ->required(),
 
             TextInput::make('caption')->label('Caption'),

@@ -15,9 +15,24 @@ class HomeController extends Controller
             ->orderBy('order')
             ->get()
             ->map(function ($item) {
+                $imagePath = $item->image_path;
+                if (is_array($imagePath)) {
+                    $imagePath = reset($imagePath); // Get first image if array
+                } elseif (is_string($imagePath)) {
+                    // check if it's stored as JSON string like ["path"]
+                    $decoded = json_decode($imagePath, true);
+                    if (is_array($decoded)) {
+                        $imagePath = reset($decoded);
+                    }
+                }
+
                 return [
-                    'image' => asset('storage/' . $item->image_path),
-                    'caption' => $item->caption
+                    'title' => $item->title,
+                    'image' => $imagePath ? asset('storage/' . $imagePath) : null,
+                    'caption' => $item->caption,
+                    'description' => $item->description,
+                    'link_url' => $item->link_url,
+                    'link_text' => $item->link_text,
                 ];
             });
 

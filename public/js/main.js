@@ -248,7 +248,7 @@ function initBackToTop() {
  * ---------------------------------------------------- */
 function initCarousel() {
   const slides = document.querySelectorAll(".carousel-slide");
-  const indicators = document.querySelectorAll(".indicator");
+  const indicators = document.querySelectorAll(".hero-indicator");
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
   
@@ -275,14 +275,41 @@ function initCarousel() {
   const prevSlide = () => goToSlide(currentIndex - 1);
 
   // Event Listeners
-  nextBtn.addEventListener("click", nextSlide);
-  prevBtn.addEventListener("click", prevSlide);
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    resetAutoSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    resetAutoSlide();
+  });
+
   indicators.forEach((indicator, index) => {
-    indicator.addEventListener("click", () => goToSlide(index));
+    indicator.addEventListener("click", () => {
+      goToSlide(index);
+      resetAutoSlide();
+    });
   });
   
-  // Optional: Auto-advance
-  // setInterval(nextSlide, 5000);
+  // Auto-advance every 5 seconds
+  let autoSlideInterval = setInterval(nextSlide, 5000);
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  }
+
+  // Pause sliding on hover
+  const carouselContainer = document.querySelector(".hero-carousel");
+  if (carouselContainer) {
+    carouselContainer.addEventListener("mouseenter", () => {
+      clearInterval(autoSlideInterval);
+    });
+    carouselContainer.addEventListener("mouseleave", () => {
+      resetAutoSlide();
+    });
+  }
 }
 
 /* ----------------------------------------------------

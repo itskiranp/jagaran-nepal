@@ -4,38 +4,85 @@
     <!-- Hero Section -->
     <div class="hero mb-5">
         <div class="hero-carousel">
-            <!-- Slides -->
+            @if(isset($carouselItems) && $carouselItems->count() > 0)
+                <!-- Slides -->
+                @foreach ($carouselItems as $item)
+                    <div class="carousel-slide {{ $loop->first ? 'active' : '' }}"
+                        style="background-image: url('{{ $item['image'] }}')">
+                        <!-- Individual Overlay inside each slide so it transitions and fades with the background image -->
+                        <div class="overlay"></div>
+
+                        <!-- Individual Content inside each slide to be fully dynamic and clickable -->
+                        <div class="hero-content">
+                            <h1>{{ $item['title'] }}</h1>
+                            <p>{{ $item['caption'] }}</p>
+                            @if(!empty($item['description']))
+                                <p class="description d-none d-md-block" style="font-size: 1.1rem; max-width: 600px; margin-top: 10px; opacity: 0.9;">
+                                    {{ $item['description'] }}
+                                </p>
+                            @endif
+                            @if(!empty($item['link_url']))
+                                <a href="{{ $item['link_url'] }}" class="btn btn-primary px-4 py-2 mt-3" style="text-shadow: none;">
+                                    {{ $item['link_text'] ?: 'Learn More' }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+
+                <!-- Navigation Controls (only render if there's more than 1 item) -->
+                @if($carouselItems->count() > 1)
+                    <div class="carousel-nav">
+                        <button class="carousel-btn prev-btn">‹</button>
+                        <button class="carousel-btn next-btn">›</button>
+                    </div>
+
+                    <!-- Indicators -->
+                    <div class="hero-indicators">
+                        @foreach ($carouselItems as $index => $item)
+                            <div class="hero-indicator {{ $loop->first ? 'active' : '' }}"></div>
+                        @endforeach
+                    </div>
+                @endif
+            @else
+                <!-- Fallback Slides when database contains no items -->
                 <div class="carousel-slide active"
                     style="background-image: url('https://images.unsplash.com/photo-1697229299093-c920ab53bfb1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTU2OTIzNzZ8&ixlib=rb-4.0.3&q=85')">
+                    <div class="overlay"></div>
+                    <div class="hero-content">
+                        <h1>Empowered Youth, Transformed World</h1>
+                        <p>Empowering youth with skills, confidence, and opportunities to lead change.</p>
+                    </div>
                 </div>
                 <div class="carousel-slide"
                     style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb‑1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="overlay"></div>
+                    <div class="hero-content">
+                        <h1>Empowered Youth, Transformed World</h1>
+                        <p>Empowering youth with skills, confidence, and opportunities to lead change.</p>
+                    </div>
                 </div>
                 <div class="carousel-slide"
                     style="background-image: url('https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb‑1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                    <div class="overlay"></div>
+                    <div class="hero-content">
+                        <h1>Empowered Youth, Transformed World</h1>
+                        <p>Empowering youth with skills, confidence, and opportunities to lead change.</p>
+                    </div>
                 </div>
 
-            <!-- Overlay -->
-            <div class="overlay"></div>
+                <!-- Fallback Controls -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev-btn">‹</button>
+                    <button class="carousel-btn next-btn">›</button>
+                </div>
 
-            <!-- Content -->
-            <div class="hero-content">
-                <h1>Empowered Youth, Transformed World</h1>
-                <p>Empowering youth with skills, confidence, and opportunities to lead change.</p>
-            </div>
-
-            <!-- Navigation -->
-            <div class="carousel-nav">
-                <button class="carousel-btn prev-btn">‹</button>
-                <button class="carousel-btn next-btn">›</button>
-            </div>
-
-            <!-- Indicators -->
-            <div class="carousel-indicators">
-                <div class="indicator active"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
-            </div>
+                <div class="hero-indicators">
+                    <div class="hero-indicator active"></div>
+                    <div class="hero-indicator"></div>
+                    <div class="hero-indicator"></div>
+                </div>
+            @endif
         </div>
     </div>
 

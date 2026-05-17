@@ -19,5 +19,24 @@ class Publication extends Model
         'published_at'
     ];
 
-    protected $dates = ['published_at'];
+    protected $casts = [
+        'published_at' => 'date',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            if (is_null($model->description)) {
+                $model->description = '';
+            }
+            if (is_null($model->published_at)) {
+                $model->published_at = now();
+            }
+            if (empty($model->slug)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->title);
+            }
+        });
+    }
 }

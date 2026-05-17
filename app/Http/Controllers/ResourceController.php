@@ -11,21 +11,26 @@ class ResourceController extends Controller
     {
         $resources = Publication::where('type', 'resource')
             ->orderBy('published_at', 'desc')
-            ->paginate(10);
+            ->get()
+            ->map(function ($item) {
+                $downloadLink = $item->file_path ? asset('storage/' . $item->file_path) : ($item->external_link ?: '#');
+                return (object)[
+                    'title' => $item->title,
+                    'date' => $item->published_at ? $item->published_at->format('Y-m-d') : now()->format('Y-m-d'),
+                    'download_link' => $downloadLink
+                ];
+            });
 
-        // Add static resources
+        // Add static resources as fallbacks
         $staticResources = [
             (object)[ 'title' => 'An Advocacy Brief on CSE in Nepal', 'date' => '2024-08-20', 'download_link' => '#' ],
             (object)[ 'title' => 'Choices and Voices Nepali Version', 'date' => '2024-06-12', 'download_link' => '#' ],
         ];
 
-        // Merge static resources with paginated resources
-        $mergedResources = collect($staticResources)->merge($resources->getCollection());
+        // Merge database records with static ones (database entries display first)
+        $mergedResources = $resources->merge($staticResources);
 
-        // Optionally, you can create a new paginator if you want to keep pagination
-        $resources->setCollection($mergedResources);
-
-        return view('resources.index', compact('resources'));
+        return view('resources.index', ['resources' => $mergedResources]);
     }
 
     public function show($slug)
