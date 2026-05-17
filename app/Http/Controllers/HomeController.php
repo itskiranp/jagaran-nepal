@@ -59,9 +59,10 @@ class HomeController extends Controller
             ->map(function ($post) {
                 return [
                     'title' => $post->title,
-                    'image' => asset('storage/' . $post->image_path),
+                    'image' => $post->image_path ? asset('storage/' . $post->image_path) : 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?crop=entropy&cs=srgb&fm=jpg&fit=crop&w=400&q=80',
                     'date' => $post->published_at->format('d M, Y'),
-                    'slug' => $post->slug
+                    'slug' => $post->slug,
+                    'excerpt' => $post->excerpt ?: \Illuminate\Support\Str::limit(strip_tags($post->content), 100)
                 ];
             });
 

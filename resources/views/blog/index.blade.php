@@ -3,7 +3,7 @@
 @section('content')
     <div class="blog-page">
         <!-- Hero Section -->
-        <section class="blog-hero bg-dark text-white py-5">
+        <section class="blog-hero bg-dark text-white py-5" style="padding-top: 120px !important;">
             <div class="container text-center">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">

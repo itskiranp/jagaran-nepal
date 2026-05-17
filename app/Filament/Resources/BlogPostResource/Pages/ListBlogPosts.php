@@ -1,15 +1,5 @@
 <?php
 
-namespace App\Filament\Resources;
-
-use App\Filament\Resources\BlogPostResource\Pages;
-use App\Models\BlogPost;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-
 namespace App\Filament\Resources\BlogPostResource\Pages;
 
 use App\Filament\Resources\BlogPostResource;

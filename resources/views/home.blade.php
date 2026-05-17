@@ -216,24 +216,26 @@
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
                     <h2>Recent Blog Posts</h2>
-                    <a href="{{ route('blog.list') }}" class="readmore">Read All Blogs<i
-                            class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('blog.list') }}" class="readmore">
+                        Read All Blogs <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
-                <div class="row gy-5">
+                <div class="row g-4">
                     @foreach ($recentBlogs as $blog)
-                        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                            <div class="post-item position-relative h-100">
-                                <div class="post-img position-relative overflow-hidden yuwa-post-img">
-                                    <img src="{{ asset($blog['image']) }}" class="img-fluid"
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                            <div class="post-item position-relative">
+                                <div class="post-img overflow-hidden">
+                                    <img src="{{ $blog['image'] }}" class="img-fluid w-100 h-100" style="object-fit: cover;"
                                         alt="{{ $blog['title'] }}">
                                     <span class="post-date">{{ $blog['date'] }}</span>
                                 </div>
-                                <div class="post-content d-flex flex-column">
+                                <div class="post-content">
                                     <h3 class="post-title">{{ $blog['title'] }}</h3>
+                                    <p class="post-excerpt">{{ $blog['excerpt'] }}</p>
                                     <hr>
                                     <a href="{{ route('blog.show', $blog['slug']) }}" class="readmore stretched-link">
-                                        <span>Read {{ $blog['title'] }}</span><i class="fas fa-arrow-right"></i>
+                                        <span>Read Full Article</span> <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
